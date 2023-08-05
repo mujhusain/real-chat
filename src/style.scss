@@ -182,7 +182,6 @@
         span {
           color: white;
           font-weight: bold;
-          // flex:1;
         }
         .otherFeaters {
           display: flex;
@@ -203,6 +202,53 @@
               filter: invert(0);
               cursor: pointer;
             }
+          }
+        }
+      }
+      .messages {
+        background-color: #ddddf7;
+        padding: 10px;
+        height: calc(100% - 130px);
+      }
+
+      .inputContainer {
+        display: flex;
+        padding: 10px;
+        justify-content: space-between;
+        align-items: center;
+
+        input {
+          width: 100%;
+          padding: 10px;
+          border: none;
+          outline: none;
+          color: #3a456a;
+          font-size: 18px;
+
+          &::placeholder {
+            color: lightgrey;
+          }
+        }
+
+        .send {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+
+          img {
+            width: 22px;
+            object-fit: cover;
+            cursor: pointer;
+            height: 22px;
+          }
+          button {
+            background-color: #607bd4;
+            padding: 10px 15px;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
           }
         }
       }
