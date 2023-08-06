@@ -10,6 +10,11 @@ const Messages = (props) => {
         <Message/>
         <Message/>
         <Message/>
+        <Message/>
+        <Message/>
+        <Message/>
+        <Message/>
+        <Message/>
     </div>
   )
 };

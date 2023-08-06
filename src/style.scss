@@ -143,6 +143,7 @@
         color: white;
         cursor: pointer;
         padding: 5px 10px;
+        overflow: scroll;
 
         &:hover {
           background-color: #546290;
@@ -209,6 +210,62 @@
         background-color: #ddddf7;
         padding: 10px;
         height: calc(100% - 130px);
+        overflow: scroll;
+
+        .message {
+          display: flex;
+          margin-bottom: 15px;
+          gap: 10px;
+
+          .messageInfo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding:10px;
+
+            img {
+              width: 32px;
+              height: 32px;
+              border-radius: 50%;
+              object-fit: cover;
+            }
+
+            span {
+              color: gray;
+              font-size: 14px;
+            }
+          }
+
+          .messageContent {
+            max-width: 80%;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            
+            p {
+              background-color: white;
+              padding: 10px 20px;
+              border-radius: 0px 10px 10px 10px;
+              max-width: max-content;
+            }
+            img{
+              max-width: 70%;
+              object-fit: cover;
+            }
+          }
+            &.owner {
+              flex-direction: row-reverse;
+              .messageContent{
+                align-items: flex-end;
+                p {
+                  background-color: #8da4f1;
+                  color: white;
+                  border-radius: 10px 0px 10px 10px;
+                }
+              }
+            }
+          
+        }
       }
 
       .inputContainer {
@@ -234,7 +291,6 @@
           display: flex;
           align-items: center;
           gap: 10px;
-
 
           img {
             width: 22px;
