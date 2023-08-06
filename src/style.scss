@@ -1,3 +1,18 @@
+@mixin mobile {
+  @media screen and (max-width: 390px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+@mixin laptop {
+  @media screen and (max-width: 1200px) {
+    @content;
+  }
+}
 .formContainer {
   background-color: #a7bcff;
   height: 100vh;
@@ -87,9 +102,18 @@
     height: 80%;
     border-radius: 10px;
     overflow: hidden;
+
+    @include mobile() {
+      width: 98%;
+      height: 100%;
+    }
     .sidebar {
       flex: 1;
       background-color: #6373a7;
+
+      @include mobile() {
+        display: none;
+      }
 
       .navbar {
         display: flex;
@@ -102,6 +126,10 @@
 
         .logo {
           font-weight: bold;
+
+          @include mobile() {
+            display: none;
+          }
         }
         .user {
           display: flex;
@@ -171,6 +199,10 @@
       flex: 2;
       background-color: white;
 
+      @include mobile() {
+        flex: 3;
+      }
+
       .chatInfo {
         height: 50px;
         display: flex;
@@ -221,7 +253,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding:10px;
+            padding: 10px;
 
             img {
               width: 32px;
@@ -241,30 +273,29 @@
             display: flex;
             flex-direction: column;
             gap: 5px;
-            
+
             p {
               background-color: white;
               padding: 10px 20px;
               border-radius: 0px 10px 10px 10px;
               max-width: max-content;
             }
-            img{
+            img {
               max-width: 70%;
               object-fit: cover;
             }
           }
-            &.owner {
-              flex-direction: row-reverse;
-              .messageContent{
-                align-items: flex-end;
-                p {
-                  background-color: #8da4f1;
-                  color: white;
-                  border-radius: 10px 0px 10px 10px;
-                }
+          &.owner {
+            flex-direction: row-reverse;
+            .messageContent {
+              align-items: flex-end;
+              p {
+                background-color: #8da4f1;
+                color: white;
+                border-radius: 10px 0px 10px 10px;
               }
             }
-          
+          }
         }
       }
 
