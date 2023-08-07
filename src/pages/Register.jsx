@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { doc, setDoc } from "firebase/firestore";
 import user from "../img/user.png";
-import { auth, storage } from "../firebase";
+import { auth, db, storage } from "../firebase";
+
 const Register = (props) => {
   const [err, setErr] = useState(false);
   const handleSubmit = async (e) => {
@@ -13,29 +15,39 @@ const Register = (props) => {
     const file = e.target[3].files[0];
 
     try {
+      //Create user
       const res = await createUserWithEmailAndPassword(auth, email, password);
-      setErr(false);
 
-      const storageRef = ref(storage, displayName);
+      //Create a unique image name
+      const date = new Date().getTime();
+      const storageRef = ref(storage, `${displayName + date}`);
 
-      const uploadTask = uploadBytesResumable(storageRef, file);
-
-      uploadTask.on(
-        "state_changed",
-        (error) => {
-          setErr(true);
-        },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+      await uploadBytesResumable(storageRef, file).then(() => {
+        getDownloadURL(storageRef).then(async (downloadURL) => {
+          try {
+            //Update profile
             await updateProfile(res.user, {
-              displayName: displayName,
+              displayName,
               photoURL: downloadURL,
             });
-            console.log("File available at", downloadURL);
-          });
-        }
-      );
-    } catch (error) {
+            console.log("dowload url",downloadURL)
+            //create user on firestore
+            await setDoc(doc(db, "users", res.user.uid), {
+              uid: res.user.uid,
+              displayName,
+              email,
+              photoURL: downloadURL,
+            });
+
+            //create empty user chats on firestore
+            // await setDoc(doc(db, "userChats", res.user.uid), {});
+          } catch (err) {
+            console.log(err);
+            setErr(true);
+          }
+        });
+      });
+    } catch (err) {
       setErr(true);
     }
   };
