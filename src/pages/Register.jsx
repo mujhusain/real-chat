@@ -4,8 +4,10 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
 import user from "../img/user.png";
 import { auth, db, storage } from "../firebase";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = (props) => {
+  const navigate = useNavigate();
   const [err, setErr] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,7 +32,6 @@ const Register = (props) => {
               displayName,
               photoURL: downloadURL,
             });
-            console.log("dowload url",downloadURL)
             //create user on firestore
             await setDoc(doc(db, "users", res.user.uid), {
               uid: res.user.uid,
@@ -39,8 +40,9 @@ const Register = (props) => {
               photoURL: downloadURL,
             });
 
-            //create empty user chats on firestore
-            // await setDoc(doc(db, "userChats", res.user.uid), {});
+            // create empty user chats on firestore
+            await setDoc(doc(db, "userChats", res.user.uid), {});
+            navigate("/");
           } catch (err) {
             console.log(err);
             setErr(true);
@@ -69,7 +71,9 @@ const Register = (props) => {
           <button>Sign up</button>
           {err && <span>Something went wrong!</span>}
         </form>
-        <p>If you are already registred! Please Login </p>
+        <p>
+          If you are already registred? <Link to="/login">Login</Link>
+        </p>
       </div>
     </div>
   );
