@@ -9,6 +9,7 @@ import { Link, useNavigate } from "react-router-dom";
 const Register = (props) => {
   const navigate = useNavigate();
   const [err, setErr] = useState(false);
+  const [fileName, setFileName] = useState("Select Avatar");
   const handleSubmit = async (e) => {
     e.preventDefault();
     const displayName = e.target[0].value;
@@ -63,10 +64,10 @@ const Register = (props) => {
           <input type="text" placeholder="Name" />
           <input type="email" placeholder="Email" />
           <input type="password" placeholder="Password" />
-          <input style={{ display: "none" }} type="file" id="avatar" />
+          <input style={{ display: "none" }} type="file" onChange={e=>setFileName(e.target.files[0].name)} id="avatar" />
           <label htmlFor="avatar">
             <img src={user} alt="user_avatar" />
-            <span>Select Avatar</span>
+            <span>{fileName}</span>
           </label>
           <button>Sign up</button>
           {err && <span>Something went wrong!</span>}

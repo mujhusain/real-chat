@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Chats = (props) => {
+  const [chats,setChats]=useState([]);
+
   return (
     <div className="chats">
       <div className="userChat">
