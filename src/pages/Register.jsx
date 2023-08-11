@@ -5,12 +5,15 @@ import { doc, setDoc } from "firebase/firestore";
 import user from "../img/user.png";
 import { auth, db, storage } from "../firebase";
 import { Link, useNavigate } from "react-router-dom";
+import Loader from "../components/Loader";
 
 const Register = (props) => {
   const navigate = useNavigate();
   const [err, setErr] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [fileName, setFileName] = useState("Select Avatar");
   const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
     const displayName = e.target[0].value;
     const email = e.target[1].value;
@@ -52,6 +55,7 @@ const Register = (props) => {
       });
     } catch (err) {
       setErr(true);
+      setLoading(false);
     }
   };
 
@@ -64,12 +68,17 @@ const Register = (props) => {
           <input type="text" placeholder="Name" />
           <input type="email" placeholder="Email" />
           <input type="password" placeholder="Password" />
-          <input style={{ display: "none" }} type="file" onChange={e=>setFileName(e.target.files[0].name)} id="avatar" />
+          <input
+            style={{ display: "none" }}
+            type="file"
+            onChange={(e) => setFileName(e.target.files[0].name)}
+            id="avatar"
+          />
           <label htmlFor="avatar">
             <img src={user} alt="user_avatar" />
             <span>{fileName}</span>
           </label>
-          <button>Sign up</button>
+          {loading ? <Loader /> : <button>Sign up</button>}
           {err && <span>Something went wrong!</span>}
         </form>
         <p>

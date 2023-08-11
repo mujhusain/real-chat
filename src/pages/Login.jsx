@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import Loader from "../components/Loader";
 
 const Login = (props) => {
   const navigate = useNavigate();
   const [err, setErr] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
     const email = e.target[0].value;
     const password = e.target[1].value;
@@ -16,6 +20,7 @@ const Login = (props) => {
       navigate("/");
     } catch (err) {
       setErr(true);
+      setLoading(false);
     }
   };
   return (
@@ -27,7 +32,7 @@ const Login = (props) => {
           <input type="email" placeholder="Email" />
           <input type="password" placeholder="Password" />
           <input style={{ display: "none" }} type="file" id="avatar" />
-          <button>Sign in</button>
+          {loading ? <Loader /> : <button>Sign in</button>}
           {err && <span>Something went wrong!</span>}
         </form>
         <p>

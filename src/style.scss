@@ -19,7 +19,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: Arial, Helvetica, sans-serif;
 
   .formWrapper {
     display: flex;
@@ -195,8 +194,9 @@
           border-radius: 50%;
         }
         .userChatInfo {
+          font-family: Verdana, Geneva, Tahoma, sans-serif;
           span {
-            font-weight: 500;
+            font-weight: 600;
             font-size: 16px;
           }
 
@@ -353,4 +353,12 @@
       }
     }
   }
+}
+
+.loader{
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 35px;
+  display: flex;
 }
