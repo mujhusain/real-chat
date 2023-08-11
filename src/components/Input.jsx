@@ -10,7 +10,7 @@ import {
   serverTimestamp,
   updateDoc,
 } from "firebase/firestore";
-import { db, storage } from "../firebase";
+import { db, storage } from "../firebase.config";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 
 const Input = (props) => {

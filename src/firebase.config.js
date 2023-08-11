@@ -10,7 +10,7 @@ const firebaseConfig = {
   storageBucket: "real-chat-ba342.appspot.com",
   messagingSenderId: "375998302417",
   appId: "1:375998302417:web:bb722abc8fd4a0bb5eddf0",
-  measurementId: "G-8K0JD6NM9F"
+  measurementId: "G-8K0JD6NM9F",
 };
 
 // Initialize Firebase

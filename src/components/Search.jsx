@@ -10,7 +10,7 @@ import {
   updateDoc,
   where,
 } from "firebase/firestore";
-import { db } from "../firebase";
+import { db } from "../firebase.config";
 import { AuthContext } from "../context/AuthContextProvider";
 
 const Search = (props) => {

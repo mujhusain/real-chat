@@ -3,7 +3,7 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
 import user from "../img/user.png";
-import { auth, db, storage } from "../firebase";
+import { auth, db, storage } from "../firebase.config";
 import { Link, useNavigate } from "react-router-dom";
 import Loader from "../components/Loader";
 

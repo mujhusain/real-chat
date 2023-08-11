@@ -1,6 +1,6 @@
 import React from "react"
 import Navbar from "./Navbar";
-import Search from "./Seach";
+import Search from "./Search";
 import Chats from "./Chats";
 
 const Sidebar = (props) => {
