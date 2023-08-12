@@ -11,6 +11,26 @@ const Message = ({ img, text, senderId, date }) => {
     console.log("date", date);
     ref.current?.scrollIntoView({ behavior: "smooth" });
   }, [img, text, senderId, date]);
+
+  const formatChatTime=({seconds, nanoseconds}) =>{
+    const messageTime = new Date(seconds * 1000 + nanoseconds / 1000000); // Convert to milliseconds
+    const currentTime = new Date().getTime(); // Get current time in milliseconds
+    const timeDifference = currentTime - messageTime.getTime();
+
+    if (timeDifference < 1000) { // Less than a second
+        return "just now";
+    } else if (timeDifference < 60 * 1000) { // Less than a minute
+        return `${Math.floor(timeDifference / 1000)} sec ago`;
+    } else if (timeDifference < 60 * 60 * 1000) { // Less than an hour
+        return `${Math.floor(timeDifference / (60 * 1000))} min ago`;
+    } else if (timeDifference < 24 * 60 * 60 * 1000) { // Less than a day
+        return `${Math.floor(timeDifference / (60 * 60 * 1000))} hours ago`;
+    } else {
+        const formattedTime = messageTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        return formattedTime;
+    }
+}
+
   return (
     <div
       ref={ref}
@@ -25,7 +45,7 @@ const Message = ({ img, text, senderId, date }) => {
           }
           alt=""
         />
-        {/* <span>{date}</span> */}
+        <span>{formatChatTime(date)}</span>
       </div>
       <div className="messageContent">
         <p>{text}</p>
