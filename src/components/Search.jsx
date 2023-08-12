@@ -12,6 +12,8 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebase.config";
 import { AuthContext } from "../context/AuthContextProvider";
+import { Menu, MenuItem } from "react-pro-sidebar";
+import { Avatar } from "@mui/material";
 
 const Search = (props) => {
   const { currentUser } = useContext(AuthContext);
@@ -34,6 +36,7 @@ const Search = (props) => {
   };
   const handleKey = (e) => {
     e.code === "Enter" && handleSearch();
+    user && setUser(null);
   };
 
   const handleSelect = async () => {
@@ -67,7 +70,7 @@ const Search = (props) => {
       }
     } catch (error) {
       console.log(error);
-      setErr(true)
+      setErr(true);
     }
     setUser(null);
     setSearchName("");
@@ -86,12 +89,15 @@ const Search = (props) => {
       </div>
       {err && <span>User not found</span>}
       {user && (
-        <div className="userChat" onClick={handleSelect}>
-          <img src={user.photoURL} alt="" />
+        <MenuItem
+          icon={<Avatar alt={user.displayName} src={user.photoURL} />}
+          style={{ textAlign: "center" }}
+          onClick={handleSelect}
+          >
           <div className="userChatInfo">
             <span>{user.displayName}</span>
           </div>
-        </div>
+        </MenuItem>
       )}
     </div>
   );

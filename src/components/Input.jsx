@@ -12,6 +12,8 @@ import {
 } from "firebase/firestore";
 import { db, storage } from "../firebase.config";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import { Button } from "@mui/material";
+import SendIcon from "@mui/icons-material/Send";
 
 const Input = (props) => {
   const [text, setText] = useState("");
@@ -89,7 +91,9 @@ const Input = (props) => {
         <label htmlFor="attachFile">
           <img src={file} alt="" />
         </label>
-        <button onClick={handleSend}>Send</button>
+        <Button variant="contained" onClick={handleSend} endIcon={<SendIcon />}>
+          Send
+        </Button>
       </div>
     </div>
   );

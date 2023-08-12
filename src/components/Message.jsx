@@ -8,7 +8,6 @@ const Message = ({ img, text, senderId, date }) => {
   const ref = useRef();
 
   useEffect(() => {
-    console.log("date", date);
     ref.current?.scrollIntoView({ behavior: "smooth" });
   }, [img, text, senderId, date]);
 
