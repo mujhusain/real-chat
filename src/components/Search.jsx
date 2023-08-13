@@ -12,7 +12,7 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebase.config";
 import { AuthContext } from "../context/AuthContextProvider";
-import { Menu, MenuItem } from "react-pro-sidebar";
+import {  MenuItem } from "react-pro-sidebar";
 import { Avatar } from "@mui/material";
 
 const Search = (props) => {

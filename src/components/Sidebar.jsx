@@ -2,7 +2,6 @@ import React from "react";
 import Navbar from "./Navbar";
 import Search from "./Search";
 import Chats from "./Chats";
-import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
 import { Sidebar, Menu, MenuItem, useProSidebar } from "react-pro-sidebar";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import PersonSearchOutlinedIcon from "@mui/icons-material/PersonSearchOutlined";
