@@ -11,7 +11,7 @@ const Message = ({ img, text, senderId, date }) => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   }, [img, text, senderId, date]);
 
-  const formatChatTime=({seconds, nanoseconds}) =>{
+  const formatChatTime=({seconds, nanoseconds}=0) =>{
     const messageTime = new Date(seconds * 1000 + nanoseconds / 1000000); // Convert to milliseconds
     const currentTime = new Date().getTime(); // Get current time in milliseconds
     const timeDifference = currentTime - messageTime.getTime();

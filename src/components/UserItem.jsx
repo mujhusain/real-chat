@@ -43,8 +43,8 @@ const UserItem = (props) => {
           variant="dot"
         >
           <Avatar
-            aalt={props.chat[1].userInfo.displayName}
-            src={props.chat[1].userInfo.photoURL}
+            alt={props.chat[1].userInfo?.displayName}
+            src={props.chat[1].userInfo?.photoURL}
           />
         </StyledBadge>
       }
@@ -52,7 +52,7 @@ const UserItem = (props) => {
     >
       <div className="userChat">
         <div className="userChatInfo">
-          <span>{props.chat[1].userInfo.displayName}</span>
+          <span>{props.chat[1].userInfo?.displayName}</span>
           <p>{props.chat[1]?.lastMessage?.text}</p>
         </div>
       </div>

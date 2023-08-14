@@ -1,13 +1,15 @@
 import React from "react"
-import Sidebar from "../components/Sidebar";
+import RightSidebar from "../components/RightSidebar";
 import Chat from "../components/Chat";
+import LeftSidebar from "../components/LeftSidebar";
 
 const Home = (props) => {
   return (
     <div className="home">
       <div className="container">
-        <Sidebar/>
+        <LeftSidebar/>
         <Chat/>
+        <RightSidebar/>
       </div>
     </div>
   )

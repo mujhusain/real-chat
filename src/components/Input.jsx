@@ -47,7 +47,7 @@ const Input = (props) => {
       } catch (err) {
         console.log(err);
       }
-    } else {
+    } else if(text) {
       await updateDoc(doc(db, "chats", data.chatId), {
         messages: arrayUnion({
           id: uuid(),
@@ -91,7 +91,7 @@ const Input = (props) => {
         <label htmlFor="attachFile">
           <img src={file} alt="" />
         </label>
-        <Button variant="contained" onClick={handleSend} endIcon={<SendIcon />}>
+        <Button size="small" variant="contained" onClick={handleSend} endIcon={<SendIcon />}>
           Send
         </Button>
       </div>

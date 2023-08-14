@@ -5,11 +5,15 @@ import Chats from "./Chats";
 import { Sidebar, Menu, MenuItem, useProSidebar } from "react-pro-sidebar";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import PersonSearchOutlinedIcon from "@mui/icons-material/PersonSearchOutlined";
-const Sidebar1 = (props) => {
+import { Typography } from "@mui/material";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase.config";
+import LogoutIcon from "@mui/icons-material/Logout";
+const LeftSidebar = (props) => {
   const { collapseSidebar } = useProSidebar();
   return (
-    <div className="sidebar">
-      <Sidebar style={{ height: "100%" }} backgroundColor="#52608e">
+    <div className="leftSideBar">
+      <Sidebar style={{ height: "100%"  }} backgroundColor="#52608e">
         <Menu>
           <MenuItem
             icon={<MenuOutlinedIcon />}
@@ -29,9 +33,18 @@ const Sidebar1 = (props) => {
 
           <Chats />
         </Menu>
+        <Menu style={{position:"absolute",bottom:0,right:0,left:0}} >
+        <MenuItem
+        onClick={() => signOut(auth)}
+            icon={<LogoutIcon />}
+            >
+              <Typography sx={{color:"white"}} >Logout</Typography>
+          </MenuItem>
+          </Menu>
       </Sidebar>
+      
     </div>
   );
 };
 
-export default Sidebar1;
+export default LeftSidebar;

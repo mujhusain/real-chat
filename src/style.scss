@@ -133,7 +133,7 @@ body {
         width: 98%;
         height: 100%;
       }
-      .sidebar {
+      .leftSideBar {
         // flex: 1;
         // background-color: #4f619d;
 
@@ -214,6 +214,28 @@ body {
           }
         }
       }
+
+      .rightSideBar{
+        width: 20%; 
+        
+        .navbar{
+          background-color: #5c6eaa;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 55px;
+            span{
+              color: white;
+          }
+        }
+
+        .usersList{
+          height: 100%; 
+          background-color: white;
+        }
+
+        
+      }
       .chat {
         flex: 2;
         background-color: white;
@@ -251,7 +273,7 @@ body {
               display: none;
             }
             display: flex;
-            padding: 0px 25px;
+            padding-left: 25px;
             gap: 10px;
             img {
               height: 20px;
@@ -278,7 +300,7 @@ body {
         .messages {
           background-color: #ddddf7;
           padding: 10px;
-          height: calc(100% - 140px);
+          height: calc(100% - 130px);
           overflow: scroll;
 
           &.nomessages {
@@ -327,7 +349,7 @@ body {
                 max-width: max-content;
               }
               img {
-                max-width: 70%;
+                max-width: 50%;
                 object-fit: cover;
               }
             }
@@ -347,15 +369,16 @@ body {
 
         .inputContainer {
           display: flex;
-          padding: 10px;
+          // background-color: #474a56;
+          padding: 5px;
           justify-content: space-between;
           align-items: center;
 
           input {
             width: 100%;
-            padding: 10px;
             border: none;
             outline: none;
+            padding: 10px;
             color: #3a456a;
             font-size: 18px;
 

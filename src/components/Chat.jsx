@@ -5,10 +5,6 @@ import more from "../img/more.png";
 import Messages from "./Messages";
 import Input from "./Input";
 import { ChatContext } from "../context/ChatContextProvider";
-import { signOut } from "firebase/auth";
-import { auth } from "../firebase.config";
-import LogoutIcon from "@mui/icons-material/Logout";
-import { Button} from "@mui/material";
 
 const Chat = (props) => {
   const { data } = useContext(ChatContext);
@@ -24,13 +20,6 @@ const Chat = (props) => {
           <img src={add_user} alt="Add" />
           <img src={more} alt="more" />
         </div>
-        <Button
-          endIcon={<LogoutIcon />}
-          onClick={() => signOut(auth)}
-          variant="outlined"
-        >
-          Logout
-        </Button>
       </div>
       <Messages />
       <Input />
