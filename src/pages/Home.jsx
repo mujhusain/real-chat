@@ -1,5 +1,4 @@
 import React from "react"
-import RightSidebar from "../components/RightSidebar";
 import Chat from "../components/Chat";
 import LeftSidebar from "../components/LeftSidebar";
 
@@ -9,7 +8,6 @@ const Home = (props) => {
       <div className="container">
         <LeftSidebar/>
         <Chat/>
-        <RightSidebar/>
       </div>
     </div>
   )
