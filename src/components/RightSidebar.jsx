@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { collectionGroup, doc, getDoc, getDocs, serverTimestamp, setDoc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase.config";
-import { ChatContext } from "../context/ChatContextProvider";
 import { Avatar } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Menu, MenuItem } from "react-pro-sidebar";
